@@ -85,11 +85,11 @@ Este microservicio proporciona funcionalidades para la gestión de vuelos.
 **Puerto 8080**
 
 - **Encontrar vuelos con suficientes plazas disponibles**
-	- **URL: /vuelos/plazas/{plazas}
+	- **URL: /vuelos/plazas/{plazas}**
 	- **Método: GET**
 
 - **Actualizar las plazas de un vuelo**
-	- **URL: /vuelos/{idVuelo}/{plazas}
+	- **URL: /vuelos/{idVuelo}/{plazas}**
 	- **Método: PUT**
 
 - **Encontar vuelo por su id**
@@ -178,4 +178,5 @@ número de personas de la reserva (numérico entero)
 
 ## Estado proyecto
 
-Finalizado (2-1-2025): Implementado
+En desarrollo (2-1-2025): Implementado al 90%
+			  Falta implementar tests
