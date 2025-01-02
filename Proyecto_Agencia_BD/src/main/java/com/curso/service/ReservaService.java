@@ -6,11 +6,14 @@ import com.curso.model.Reserva;
 
 /**
  * @author Francisco Manuel Villalobos
- * @version 1.0 31/12/2024
+ * @version 1.0 02/01/2025
  */
 public interface ReservaService {
 
 	List<Reserva> findAll();
 	void save(Reserva reserva);
-	List<Reserva> findReservasPorHotel(int id);
+	List<Reserva> findByHotel(int id);
+	
+	//Método que solo uso en test
+	Reserva findById(int id);
 }

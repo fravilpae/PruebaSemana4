@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
  * @author Francisco Manuel Villalobos
- * @version 1.0 30/12/2024
+ * @version 1.1 02/01/2025
  */
 @Tag(name = "Vuelos", description = "Métodos de vuelos")
 @RestController
@@ -69,7 +69,7 @@ public class VueloController {
 	@PutMapping("/{idVuelo}/{plazas}")
 	public ResponseEntity<String> actualizarPlazasVuelo(@PathVariable("idVuelo") int idVuelo, @PathVariable("plazas") int plazas) {
 		try {
-			String mensaje = service.actualizarPlazasVuelo(idVuelo, plazas);
+			String mensaje = service.actualizarPlazas(idVuelo, plazas);
 			return new ResponseEntity<>(mensaje, mensaje.equals("Vuelo reservado") ? HttpStatus.OK : HttpStatus.NOT_FOUND);
 		} catch (RuntimeException e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -84,7 +84,7 @@ public class VueloController {
 			})
 	@GetMapping("/futuros")
 	public ResponseEntity<List<Vuelo>> obtenerVuelosFuturos() {
-		List<Vuelo> vuelos = service.findVuelosFuturos();
+		List<Vuelo> vuelos = service.findFuturos();
 		return ResponseEntity.ok(vuelos);
 	}
 

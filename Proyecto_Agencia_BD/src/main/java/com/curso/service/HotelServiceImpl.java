@@ -9,7 +9,7 @@ import com.curso.model.Hotel;
 import com.curso.repository.HotelRepository;
 /**
  * @author Francisco Manuel Villalobos
- * @version 1.0 30/12/2024
+ * @version 1.0 02/01/2025
  */
 @Service
 public class HotelServiceImpl implements HotelService {
@@ -41,7 +41,11 @@ public class HotelServiceImpl implements HotelService {
 	 * @param plazas Número de plazas que se van a ocupar
 	 */
 	@Override
-	public String actualizarPlazasHotel(int idHotel, int plazas) {
+	public String actualizarPlazas(int idHotel, int plazas) {
+		if (plazas <= 0) {
+			return "No se pueden reservar plazas negativas.";
+		}
+		
 		Hotel hotelAModificar = repository.findById(idHotel).orElse(null);
 		if (hotelAModificar != null) {
 			if (plazas <= hotelAModificar.getPlazas()) {
@@ -50,7 +54,7 @@ public class HotelServiceImpl implements HotelService {
 					hotelAModificar.setDisponible(false);
 				}
 				repository.save(hotelAModificar);
-				return "Hotel reservado";
+				return "Hotel reservado.";
 			} else {
 				throw new RuntimeException("El hotel no tiene las suficientes plazas para la reserva.");
 			}
@@ -63,7 +67,7 @@ public class HotelServiceImpl implements HotelService {
 	 * Devuelve la lista de todos los hoteles que están disponibles
 	 */
 	@Override
-	public List<Hotel> findHotelesDisponibles() {
+	public List<Hotel> findDisponibles() {
 		return repository.findAllByDisponibleTrue();
 	}
 

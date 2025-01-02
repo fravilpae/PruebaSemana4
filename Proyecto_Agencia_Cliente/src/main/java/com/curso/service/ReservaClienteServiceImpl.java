@@ -14,7 +14,7 @@ import com.curso.model.ReservaDTO;
 import com.curso.model.VueloDTO;
 /**
  * @author Francisco Manuel Villalobos
- * @version 1.0 31/12/2024
+ * @version 1.1 02/01/2025
  */
 @Service
 public class ReservaClienteServiceImpl implements ReservaClienteService {
@@ -42,7 +42,6 @@ public class ReservaClienteServiceImpl implements ReservaClienteService {
 		template.postForLocation(URL_RESERVAS, reserva);
 		template.put(URL_VUELOS+"/"+reservaCliente.getIdVuelo()+"/"+reservaCliente.getPersonas(),null);
 		template.put(URL_HOTELES+"/"+reservaCliente.getIdHotel()+"/"+reservaCliente.getPersonas(),null);
-		//TODO - Los fallos que ocurren por detras en base de datos debido a malos inputs (Ej. DNI de 10 caracteres) dan error 500. Habría que controlarlos
 
 	}
 

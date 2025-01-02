@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -19,7 +19,7 @@ import jakarta.persistence.TemporalType;
 
 /**
  * @author Francisco Manuel Villalobos
- * @version 1.0 30/12/2024
+ * @version 1.1 02/01/2025
  */
 @Entity
 @Table(name = "vuelos")
@@ -46,7 +46,7 @@ public class Vuelo {
 	@Column(length = 200)
 	private String destino;			//Destino del avión
 	
-	@JsonIgnore
+	@JsonManagedReference
 	@OneToMany(mappedBy = "vuelo", cascade = CascadeType.REMOVE)
 	private List<Reserva> reservas = new ArrayList<Reserva>();
 

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,10 +22,11 @@ import com.curso.service.ReservaClienteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 /**
  * @author Francisco Manuel Villalobos
- * @version 1.0 31/12/2024
+ * @version 1.1 02/01/2025
  */
 @Tag(name = "Reservas Cliente", description = "Métodos de reserva de un cliente")
 @RestController
@@ -32,13 +35,14 @@ public class ReservaClienteController {
 	@Autowired
 	private ReservaClienteService service;
 	
+	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@Operation(description = "Realizar una reserva",
 			summary = "Se crea una reserva en la base de datos y se actualizan el hotel y vuelo correspondientes", responses = {
 		@ApiResponse(responseCode = "201", description = "Reserva realizada"),
 		@ApiResponse(responseCode = "400", description = "Solicitud inválida")
 	})
 	@PostMapping(value = "/reservas")
-	public ResponseEntity<String> realizarReserva(@RequestBody ReservaCliente reservaCliente) {
+	public ResponseEntity<String> realizarReserva(@Valid @RequestBody ReservaCliente reservaCliente) {
 		try {
 			service.realizarReserva(reservaCliente);
 			return new ResponseEntity<>("Reserva realizada", HttpStatus.CREATED);

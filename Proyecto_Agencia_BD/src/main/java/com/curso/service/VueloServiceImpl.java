@@ -10,7 +10,7 @@ import com.curso.model.Vuelo;
 import com.curso.repository.VueloRepository;
 /**
  * @author Francisco Manuel Villalobos
- * @version 1.0 30/12/2024
+ * @version 1.1 02/01/2025
  */
 @Service
 public class VueloServiceImpl implements VueloService {
@@ -35,13 +35,16 @@ public class VueloServiceImpl implements VueloService {
 	 * @param plazas Número de plazas a reservar en el avión
 	 */
 	@Override
-	public String actualizarPlazasVuelo(int idVuelo, int plazas) {
+	public String actualizarPlazas(int idVuelo, int plazas) {
+		if (plazas <= 0) {
+			return "No se pueden reservar plazas negativas.";
+		}
 		Vuelo vueloAModificar = repository.findById(idVuelo).orElse(null);
 		if (vueloAModificar != null) {
 			if (plazas <= vueloAModificar.getPlazasDisponibles()) {
 				vueloAModificar.setPlazasDisponibles(vueloAModificar.getPlazasDisponibles()-plazas);
 				repository.save(vueloAModificar);
-				return "Vuelo reservado";
+				return "Vuelo reservado.";
 			} else {
 				throw new RuntimeException("El vuelo no tiene las suficientes plazas para la reserva.");
 			}
@@ -59,7 +62,7 @@ public class VueloServiceImpl implements VueloService {
 	 * Devuelve los vuelos futuros a cuando se ejecuta el método
 	 */
 	@Override
-	public List<Vuelo> findVuelosFuturos() {
+	public List<Vuelo> findFuturos() {
 		LocalDateTime hoy = LocalDateTime.now();
 		return repository.findAllByFechaVueloAfter(hoy);
 	}

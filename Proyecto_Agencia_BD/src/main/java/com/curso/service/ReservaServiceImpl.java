@@ -10,7 +10,7 @@ import com.curso.repository.ReservaRepository;
 
 /**
  * @author Francisco Manuel Villalobos
- * @version 1.0 31/12/2024
+ * @version 1.0 02/01/2025
  */
 @Service
 public class ReservaServiceImpl implements ReservaService {
@@ -29,8 +29,13 @@ public class ReservaServiceImpl implements ReservaService {
 	}
 
 	@Override
-	public List<Reserva> findReservasPorHotel(int id) {
+	public List<Reserva> findByHotel(int id) {
 		return repository.findAllByHotel(id);
+	}
+
+	@Override
+	public Reserva findById(int id) {
+		return repository.findById(id).orElse(null);
 	}
 
 }

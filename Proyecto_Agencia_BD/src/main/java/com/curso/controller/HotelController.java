@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
  * @author Francisco Manuel Villalobos
- * @version 1.0 30/12/2024
+ * @version 1.1 02/01/2025
  */
 @Tag(name = "Hoteles", description = "Métodos de hoteles")
 @RestController
@@ -44,7 +44,7 @@ public class HotelController {
 	})
 	@GetMapping("/disponibles")
 	public ResponseEntity<List<Hotel>> getHotelesDisponibles() {
-		List<Hotel> hoteles = service.findHotelesDisponibles();
+		List<Hotel> hoteles = service.findDisponibles();
 		return ResponseEntity.ok(hoteles);
 	}
 	
@@ -88,7 +88,7 @@ public class HotelController {
 	@PutMapping("/{idHotel}/{plazas}")
 	public ResponseEntity<String> actualizarPlazasHotel(@PathVariable("idHotel") int idHotel, @PathVariable("plazas") int plazas) {
 		try {
-			String mensaje = service.actualizarPlazasHotel(idHotel, plazas);
+			String mensaje = service.actualizarPlazas(idHotel, plazas);
 			return new ResponseEntity<>(mensaje, mensaje.equals("Hotel reservado") ? HttpStatus.OK : HttpStatus.NOT_FOUND);
 		} catch (RuntimeException e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

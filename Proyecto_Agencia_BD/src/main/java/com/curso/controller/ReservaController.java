@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,10 +20,11 @@ import com.curso.service.ReservaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 /**
  * @author Francisco Manuel Villalobos
- * @version 1.0 31/12/2024
+ * @version 1.1 02/01/2025
  */
 @Tag(name = "Reservas", description = "Métodos de reservas")
 @RestController
@@ -40,19 +43,20 @@ public class ReservaController {
 		return ResponseEntity.ok(reservas);
 	}
 	
+	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@Operation(summary = "Crea una reserva", description = "Crea una reserva a partir de los datos añadidos en el cuerpo", responses = {
 		@ApiResponse(responseCode = "201", description = "Reserva creada"),
 		@ApiResponse(responseCode = "400", description = "Solicitud inválida")
 	})
 	@PostMapping
-	public ResponseEntity<String> addReserva(@RequestBody Reserva r) {
+	public ResponseEntity<String> addReserva(@Valid @RequestBody Reserva r) {
 		service.save(r);
 		return new ResponseEntity<>("Reserva creada", HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/{idHotel}")
 	public ResponseEntity<List<Reserva>> getReservasPorHotelId(@PathVariable("idHotel") int idHotel) {
-		List<Reserva> reservas = service.findReservasPorHotel(idHotel);
+		List<Reserva> reservas = service.findByHotel(idHotel);
 		return ResponseEntity.ok(reservas);
 	}
 
