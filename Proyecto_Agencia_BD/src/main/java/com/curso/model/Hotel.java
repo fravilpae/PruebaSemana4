@@ -3,7 +3,7 @@ package com.curso.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -45,7 +45,7 @@ public final class Hotel {
 	@Column(length = 200)
 	private String lugar; 		//Lugar del hotel
 	
-	@JsonManagedReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "hotel", cascade = CascadeType.REMOVE)
 	private List<Reserva> reservas = new ArrayList<Reserva>();
 	

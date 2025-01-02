@@ -1,7 +1,5 @@
 package com.curso.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,12 +36,10 @@ public class Reserva {
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "id_hotel")
-	@JsonBackReference
 	private Hotel hotel;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "id_vuelo")
-	@JsonBackReference
 	private Vuelo vuelo;
 
 	public Reserva() {

@@ -14,6 +14,6 @@ public interface ReservaService {
 	void save(Reserva reserva);
 	List<Reserva> findByHotel(int id);
 	
-	//Método que solo uso en test
+	//Método que solo se usa en testing
 	Reserva findById(int id);
 }

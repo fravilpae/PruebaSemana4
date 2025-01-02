@@ -89,7 +89,7 @@ public class HotelController {
 	public ResponseEntity<String> actualizarPlazasHotel(@PathVariable("idHotel") int idHotel, @PathVariable("plazas") int plazas) {
 		try {
 			String mensaje = service.actualizarPlazas(idHotel, plazas);
-			return new ResponseEntity<>(mensaje, mensaje.equals("Hotel reservado") ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(mensaje, mensaje.equals("Hotel reservado.") ? HttpStatus.OK : HttpStatus.NOT_FOUND);
 		} catch (RuntimeException e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}

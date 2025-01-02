@@ -1,4 +1,5 @@
 package com.curso.model;
+
 /**
  * Clase DTO de la entidad Reserva
  * @author Francisco Manuel Villalobos

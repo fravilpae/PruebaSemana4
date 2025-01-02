@@ -35,7 +35,7 @@ public class ReservaClienteController {
 	@Autowired
 	private ReservaClienteService service;
 	
-	@ExceptionHandler(MethodArgumentNotValidException.class)
+	@ExceptionHandler(MethodArgumentNotValidException.class) //TODO - Averiguar cómo funciona
 	@Operation(description = "Realizar una reserva",
 			summary = "Se crea una reserva en la base de datos y se actualizan el hotel y vuelo correspondientes", responses = {
 		@ApiResponse(responseCode = "201", description = "Reserva realizada"),

@@ -43,7 +43,7 @@ public class ReservaController {
 		return ResponseEntity.ok(reservas);
 	}
 	
-	@ExceptionHandler(MethodArgumentNotValidException.class)
+	@ExceptionHandler(MethodArgumentNotValidException.class) //TODO - Averiguar cómo funciona
 	@Operation(summary = "Crea una reserva", description = "Crea una reserva a partir de los datos añadidos en el cuerpo", responses = {
 		@ApiResponse(responseCode = "201", description = "Reserva creada"),
 		@ApiResponse(responseCode = "400", description = "Solicitud inválida")

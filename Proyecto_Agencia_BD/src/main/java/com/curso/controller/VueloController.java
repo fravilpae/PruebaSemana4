@@ -70,7 +70,7 @@ public class VueloController {
 	public ResponseEntity<String> actualizarPlazasVuelo(@PathVariable("idVuelo") int idVuelo, @PathVariable("plazas") int plazas) {
 		try {
 			String mensaje = service.actualizarPlazas(idVuelo, plazas);
-			return new ResponseEntity<>(mensaje, mensaje.equals("Vuelo reservado") ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(mensaje, mensaje.equals("Vuelo reservado.") ? HttpStatus.OK : HttpStatus.NOT_FOUND);
 		} catch (RuntimeException e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}

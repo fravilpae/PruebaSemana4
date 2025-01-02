@@ -1,4 +1,5 @@
 package com.curso.model;
+
 /**
  * @author Francisco Manuel Villalobos
  * @version 1.0 31/12/2024
