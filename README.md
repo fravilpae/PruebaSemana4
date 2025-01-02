@@ -178,5 +178,4 @@ número de personas de la reserva (numérico entero)
 
 ## Estado proyecto
 
-En desarrollo (2-1-2025): Implementado al 90%
-			  Falta implementar tests
+Finalizado (2-1-2025): Implementado
