@@ -27,7 +27,7 @@ public class ReservaDTO {
 
 
 	public ReservaDTO(int idReserva, String nombreCliente, String dni, HotelDTO hotel, VueloDTO vuelo) {
-		this(nombreCliente, dni, hotel, vuelo);
+		this(nombreCliente, dni,hotel, vuelo);
 		this.idReserva = idReserva;
 	}
 

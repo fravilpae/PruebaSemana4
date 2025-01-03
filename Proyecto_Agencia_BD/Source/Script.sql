@@ -35,7 +35,7 @@ INSERT INTO `hoteles` (`nombre`, `categoria`, `precio`, `disponible`, `plazas`, 
 INSERT INTO `hoteles` (`nombre`, `categoria`, `precio`, `disponible`, `plazas`, `lugar`) VALUES ('Hotel 2', 'Dos_estrellas', '27.95', '1', '30', 'Madrid');
 INSERT INTO `hoteles` (`nombre`, `categoria`, `precio`, `disponible`, `plazas`, `lugar`) VALUES ('Hotel 3', 'Tres_estrellas', '33.95', '1', '30', 'Barcelona');
 INSERT INTO `hoteles` (`nombre`, `categoria`, `precio`, `disponible`, `plazas`, `lugar`) VALUES ('Hotel 4', 'Cuatro_estrellas', '64.95', '1', '30', 'Nueva York');
-INSERT INTO `hoteles` (`nombre`, `categoria`, `precio`, `disponible`, `plazas`, `lugar`) VALUES ('Hotel 5', 'Cinco_estrellas', '99.95', '1', '30', 'Sevilla');
+INSERT INTO `hoteles` (`nombre`, `categoria`, `precio`, `disponible`, `plazas`, `lugar`) VALUES ('Hotel 5', 'Cinco_estrellas', '99.95', '0', '0', 'Sevilla');
 INSERT INTO `hoteles` (`nombre`, `categoria`, `precio`, `disponible`, `plazas`, `lugar`) VALUES ('Hotel 6', 'Sin_estrellas', '15.95', '1', '30', 'Sevilla');
 
 INSERT INTO `vuelos` (`compania`, `fecha_vuelo`, `precio`, `plazas_disponibles`, `destino`) VALUES ('Iberia', '2025-03-15 08:30:00', '150.50', '98', 'Sevilla');

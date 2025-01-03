@@ -1,5 +1,7 @@
 package com.curso.model;
 
+import jakarta.validation.constraints.Size;
+
 /**
  * @author Francisco Manuel Villalobos
  * @version 1.0 31/12/2024
@@ -9,6 +11,7 @@ public class ReservaCliente {
 	private int idVuelo;
 	private int idHotel;
 	private String nombre;
+	@Size(max = 9, message = "Introduzca un dni válido")
 	private String dni;
 	private int personas;
 	

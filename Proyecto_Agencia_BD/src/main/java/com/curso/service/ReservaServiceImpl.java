@@ -40,6 +40,8 @@ public class ReservaServiceImpl implements ReservaService {
 			throw new RuntimeException("El vuelo no se dirige hacia la dirección del hotel");
 		} else if (reserva.getVuelo().getFechaVuelo().isBefore(LocalDateTime.now())) {
 			throw new RuntimeException("El vuelo ocurrió en el pasado. No puede ser reservado");
+		} else if (reserva.getHotel().isDisponible()==false) {
+			throw new RuntimeException("El hotel no se encuentra disponible");
 		}
 	}
 

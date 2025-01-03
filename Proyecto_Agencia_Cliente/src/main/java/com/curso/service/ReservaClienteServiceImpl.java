@@ -52,8 +52,8 @@ public class ReservaClienteServiceImpl implements ReservaClienteService {
 	 * Comprueba que el vuelo reservado es futuro
 	 */
 	private void validarReserva(ReservaCliente reserva, HotelDTO hotel, VueloDTO vuelo) {
-		if(hotel.getPlazas()< reserva.getPersonas()) {
-			throw new RuntimeException("El hotel no dispone de las suficientes plazas");
+		if(hotel.getPlazas()< reserva.getPersonas() || hotel.isDisponible()==false) {
+			throw new RuntimeException("El hotel no se encuentra disponible");
 		} else if (vuelo.getPlazasDisponibles()< reserva.getPersonas()) {
 			throw new RuntimeException("El vuelo no dispone de las suficientes plazas");
 		} else if (!(hotel.getLugar().equalsIgnoreCase(vuelo.getDestino()))) {

@@ -38,6 +38,9 @@ public class VueloController {
 			})
 	@GetMapping("/plazas/{plazas}")
 	public ResponseEntity<List<Vuelo>> vuelosDisponiblesPorPlazas(@PathVariable("plazas") int plazas) {
+		if(plazas < 0) {
+			return ResponseEntity.badRequest().build();
+		}
 		List<Vuelo> vuelos = service.findByPlazasDisponiblesGreaterThanEqual(plazas);
 		return ResponseEntity.ok(vuelos);
 	}

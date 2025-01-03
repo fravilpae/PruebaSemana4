@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,7 +41,6 @@ public class ReservaController {
 		return ResponseEntity.ok(reservas);
 	}
 	
-	@ExceptionHandler(MethodArgumentNotValidException.class) //TODO - Averiguar cómo funciona
 	@Operation(summary = "Crea una reserva", description = "Crea una reserva a partir de los datos añadidos en el cuerpo", responses = {
 		@ApiResponse(responseCode = "201", description = "Reserva creada"),
 		@ApiResponse(responseCode = "400", description = "Solicitud inválida")
