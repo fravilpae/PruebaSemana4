@@ -50,8 +50,12 @@ public class ReservaController {
 	})
 	@PostMapping
 	public ResponseEntity<String> addReserva(@Valid @RequestBody Reserva r) {
-		service.save(r);
-		return new ResponseEntity<>("Reserva creada", HttpStatus.CREATED);
+		try {
+			service.save(r);
+			return new ResponseEntity<>("Reserva creada", HttpStatus.CREATED);
+		} catch (RuntimeException e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@GetMapping("/{idHotel}")
